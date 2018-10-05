@@ -1,0 +1,9 @@
+<resources>
+    <dimen name="image_height">192dp</dimen>
+    <dimen name="description_text_size">12sp</dimen>
+    <dimen name="user_text_size">12sp</dimen>
+    <dimen name="card_elevation">4dp</dimen>
+    <dimen name="card_corner_radius">8dp</dimen>
+    <dimen name="separator_height">1dp</dimen>
+    <dimen name="text_padding">4dp</dimen>
+</resources>
