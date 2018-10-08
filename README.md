@@ -4,11 +4,11 @@
 
 ##### ImageSearch allows you to search and download images from https://unsplash.com/.
 
-![ScreenShot_1](https://github.com/ptmr3/image-search/blob/master/ScreenShot_1.png)
-![ScreenShot_2](https://github.com/ptmr3/image-search/blob/master/ScreenShot_2.png)
-![ScreenShot_3](https://github.com/ptmr3/image-search/blob/master/ScreenShot_3.png)
-![ScreenShot_4](https://github.com/ptmr3/image-search/blob/master/ScreenShot_4.png)
-![ScreenShot_5](https://github.com/ptmr3/image-search/blob/master/ScreenShot_5.png)
+![ScreenShot_1](https://github.com/ptmr3/image-search/blob/master/doc/Screenshot_1.png)
+![ScreenShot_2](https://github.com/ptmr3/image-search/blob/master/doc/ScreenShot_2.png)
+![ScreenShot_3](https://github.com/ptmr3/image-search/blob/master/doc/ScreenShot_3.png)
+![ScreenShot_4](https://github.com/ptmr3/image-search/blob/master/doc/ScreenShot_4.png)
+![ScreenShot_5](https://github.com/ptmr3/image-search/blob/master/doc/ScreenShot_5.png)
 
 ##### Composition and Architecture
 
@@ -22,7 +22,7 @@ testing libraries that are only while running unit tests.
 
 ##### Let's get more specific
 
-![ImageSearchArch](https://github.com/ptmr3/image-search/blob/master/ImageSearchArch.png)
+![ImageSearchArch](https://github.com/ptmr3/image-search/blob/master/doc/ImageSearchArch.png)
 
 
 
