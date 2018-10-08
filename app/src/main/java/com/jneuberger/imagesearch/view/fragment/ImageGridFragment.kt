@@ -122,12 +122,15 @@ class ImageGridFragment : Fragment(), Observer {
                 } else {
                     downloadButton.visibility = View.GONE
                     mImagesToDownloadList.clear()
+                    mImageListAdapter.updateImageList(mSearchStore.images)
                 }
             }
             SEARCH_BY_TERM -> {
                 fragmentProgressBar.visibility = View.GONE
                 fragmentProgressBar.isIndeterminate = false
-                mImageListAdapter.updateImageList(mSearchStore.images)
+                if (!mAppStore.editModeEnabled) {
+                    mImageListAdapter.updateImageList(mSearchStore.images)
+                }
             }
             NOTIFY_DOWNLOAD_COMPLETE -> {
                 mImageListAdapter.updateImageList(mSearchStore.images)

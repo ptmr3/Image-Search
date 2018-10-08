@@ -57,10 +57,15 @@ class SearchStore : Observable(), Observer, AsyncResult {
 
     override fun onProgressUpdate(result: ArrayList<Image>) {
         images = result
-        setChanged().run { notifyObservers(Reaction(SEARCH_BY_TERM)) }
+        if (images.size < 20) {
+            setChanged().run { notifyObservers(Reaction(SEARCH_BY_TERM)) }
+        } else if (images.size % 10 == 0) {
+            setChanged().run { notifyObservers(Reaction(SEARCH_BY_TERM)) }
+        }
     }
 
     override fun onProcessComplete(result: ArrayList<Image>?) {
+        setChanged().run { notifyObservers(Reaction(SEARCH_BY_TERM)) }
         if (result == null || result.isEmpty()) {
             showErrorFragment(R.drawable.error_image, R.string.no_results_title,
                     R.string.no_results_description, false, false)
