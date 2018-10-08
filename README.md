@@ -4,11 +4,11 @@
 
 ##### ImageSearch allows you to search and download images from https://unsplash.com/.
 
-![ScreenShot_1](https://github.com/ptmr3/image-search/blob/master/doc/Screenshot_1.png)
-![ScreenShot_2](https://github.com/ptmr3/image-search/blob/master/doc/ScreenShot_2.png)
-![ScreenShot_3](https://github.com/ptmr3/image-search/blob/master/doc/ScreenShot_3.png)
-![ScreenShot_4](https://github.com/ptmr3/image-search/blob/master/doc/ScreenShot_4.png)
-![ScreenShot_5](https://github.com/ptmr3/image-search/blob/master/doc/ScreenShot_5.png)
+<a href="url"><img src="https://github.com/ptmr3/image-search/blob/master/doc/Screenshot_1.png" align="left" width="48" ></a>
+<a href="url"><img src="https://github.com/ptmr3/image-search/blob/master/doc/Screenshot_2.png" align="left" width="48" ></a>
+<a href="url"><img src="https://github.com/ptmr3/image-search/blob/master/doc/Screenshot_3.png" align="left" width="48" ></a>
+<a href="url"><img src="https://github.com/ptmr3/image-search/blob/master/doc/Screenshot_4.png" align="left" width="48" ></a>
+<a href="url"><img src="https://github.com/ptmr3/image-search/blob/master/doc/Screenshot_5.png" align="left" width="48" ></a>
 
 ##### Composition and Architecture
 
