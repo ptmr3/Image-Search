@@ -14,7 +14,7 @@ class ImageListAdapter(private val mContext: Context) : RecyclerView.Adapter<Ima
     private val mImageList = ArrayList<Image>()
     private lateinit var mHolder: ImageListAdapter.ViewHolder
     private lateinit var mOnClickListener: View.OnClickListener
-
+    private lateinit var mOnLongClickListener: View.OnLongClickListener
 
     override fun getItemCount(): Int {
         return mImageList.size
@@ -28,10 +28,15 @@ class ImageListAdapter(private val mContext: Context) : RecyclerView.Adapter<Ima
         mHolder = holder
         mHolder.bindItems(mImageList[position])
         mHolder.itemView.setOnClickListener { view -> mOnClickListener.onClick(view) }
+        mHolder.itemView.setOnLongClickListener { view -> mOnLongClickListener.onLongClick(view) }
     }
 
     fun setOnClickListener(onClickListener: View.OnClickListener) {
         mOnClickListener = onClickListener
+    }
+
+    fun setOnLongClickListener(onLongClickListener: View.OnLongClickListener) {
+        mOnLongClickListener = onLongClickListener
     }
 
     fun updateImageList(imageList: List<Image>) {
@@ -43,8 +48,31 @@ class ImageListAdapter(private val mContext: Context) : RecyclerView.Adapter<Ima
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bindItems(image: Image) {
             itemView.imageView.setImageBitmap(image.smallImage)
-            itemView.description.text = image.description
-            itemView.userFullName.text = image.user
+            image.description?.let {
+                itemView.description.text = if (it == NULL) { "" } else { it }
+                itemView.userFullName.text = image.user
+                if (image.isDownloading!!) {
+                    itemView.progressBar.visibility = View.VISIBLE
+                    itemView.progressBar.isIndeterminate = true
+                } else {
+                    itemView.progressBar.visibility = View.GONE
+                    itemView.progressBar.isIndeterminate = false
+                }
+                if (image.isDownloaded!!) {
+                    itemView.downloaded.visibility = View.VISIBLE
+                } else {
+                    itemView.downloaded.visibility = View.GONE
+                }
+                if (image.isDownloading!! || image.isDownloaded!!) {
+                    itemView.itemLayout.alpha = .5f
+                } else {
+                    itemView.itemLayout.alpha = 1f
+                }
+            }
         }
+    }
+
+    companion object {
+        const val NULL = "null"
     }
 }

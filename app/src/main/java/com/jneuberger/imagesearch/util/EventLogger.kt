@@ -1,11 +1,11 @@
-package com.jneuberger.imagesearch
+package com.jneuberger.imagesearch.util
 
 import android.util.Log
-import com.jneuberger.imagesearch.action.Action
-import com.jneuberger.imagesearch.store.Reaction
+import com.jneuberger.imagesearch.flux.action.Action
+import com.jneuberger.imagesearch.flux.store.Reaction
 import java.util.*
 
-class EventLogger: Observer {
+class EventLogger : Observer {
     override fun update(o: Observable?, arg: Any?) {
         val argString: String = when (arg) {
             is Action -> arg.type
@@ -16,6 +16,6 @@ class EventLogger: Observer {
     }
 
     companion object {
-        val instance : EventLogger by lazy { EventLogger() }
+        val instance: EventLogger by lazy { EventLogger() }
     }
 }
