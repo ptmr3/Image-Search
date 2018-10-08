@@ -1,14 +1,16 @@
 package com.jneuberger.imagesearch.view.fragment
 
-import android.support.v4.app.Fragment
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import com.jneuberger.imagesearch.R
-import com.jneuberger.imagesearch.action.creator.AppActionsCreator
-import com.jneuberger.imagesearch.action.creator.SearchActionsCreator
+import com.jneuberger.imagesearch.flux.action.creator.AppActionsCreator
+import com.jneuberger.imagesearch.flux.action.creator.SearchActionsCreator
 import kotlinx.android.synthetic.main.fragment_search.*
+
 
 class SearchFragment : Fragment() {
     private var mAppActionsCreator = AppActionsCreator.instance
@@ -21,11 +23,18 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         searchButton.setOnClickListener {
-            val searchTerm = stringToSearchInput.text.toString()
-            if (searchTerm.isNotEmpty()) {
-                mSearchActionsCreator.searchByTerm(searchTerm)
-                mAppActionsCreator.replaceFragment(ImageGridFragment.instance)
-            }
+            stringToSearchInput.onEditorAction(EditorInfo.IME_ACTION_DONE)
+                val searchTerm = stringToSearchInput.text.toString()
+                if (searchTerm.isEmpty()) {
+                    stringToSearchInput.apply {
+                        error = context.getString(R.string.please_enter_text)
+                        text?.clear()
+                    }
+                } else {
+                    stringToSearchInput.text?.clear()
+                    mAppActionsCreator.replaceFragment(ImageGridFragment.instance)
+                    mSearchActionsCreator.searchByTerm(context!! ,searchTerm)
+                }
         }
     }
 

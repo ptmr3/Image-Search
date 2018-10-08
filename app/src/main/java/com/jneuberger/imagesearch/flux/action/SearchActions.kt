@@ -1,8 +1,10 @@
-package com.jneuberger.imagesearch.action
+package com.jneuberger.imagesearch.flux.action
+
+import android.content.Context
 
 interface SearchActions {
     fun cancelSearch()
-    fun searchByTerm(userInput: String)
+    fun searchByTerm(context: Context, userInput: String)
 
     companion object {
         const val CANCEL_SEARCH = "cancelSearch"

@@ -1,41 +1,42 @@
 package com.jneuberger.imagesearch.network
 
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.AsyncTask
+import android.os.Handler
+import android.os.Looper
 import com.jneuberger.imagesearch.entity.Image
+import org.json.JSONObject
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
 import java.net.HttpURLConnection
 import java.net.URL
-import org.json.JSONObject
-import android.graphics.BitmapFactory
-import android.net.Uri
-import com.jneuberger.imagesearch.action.ActionKeys
-import com.jneuberger.imagesearch.store.SearchStore
-import java.net.CacheResponse
-import kotlin.collections.ArrayList
 
-class SearchImagesRequest(private val mAsyncResultListener: AsyncResult): AsyncTask<String, ArrayList<Image>, ArrayList<Image>?>() {
-private val mImageList = ArrayList<Image>()
+
+class SearchImagesRequest(private val mAsyncResultListener: AsyncResult) : AsyncTask<String, ArrayList<Image>, ArrayList<Image>?>() {
+    private val mImageList = ArrayList<Image>()
 
     override fun doInBackground(vararg params: String): ArrayList<Image>? {
-        val imageSearchUrl = Uri.parse(UNSPLASH_URL).buildUpon()
+        val imageSearchUrl = Uri.parse(PHOTO_SEARCH_URL).buildUpon()
                 .appendQueryParameter(CLIENT_ID, TOKEN)
                 .appendQueryParameter(QUERY, params[0])
-                .appendQueryParameter("per_page", "30")
+                .appendQueryParameter(PER_PAGE, ITEMS_PER_PAGE)
         try {
             val jsonResponse = request(URL(imageSearchUrl.build().toString()))
-            val pages = JSONObject(jsonResponse).getString("total_pages").toInt()
+            val pages = JSONObject(jsonResponse).getString(TOTAL_PAGES).toInt()
             if (pages > 1) {
                 for (page in 0 until pages) {
-                    buildImageList(request(URL(imageSearchUrl.appendQueryParameter("page", page.toString()).build().toString())))
+                    if (isCancelled) { break }
+                    buildImageList(request(URL(imageSearchUrl.appendQueryParameter(PAGE, page.toString()).build().toString())))
                 }
             } else {
                 buildImageList(jsonResponse)
             }
         } catch (ioException: IOException) {
             ioException.printStackTrace()
+            Handler(Looper.getMainLooper()).post { mAsyncResultListener.onError(ioException) }
         }
         return mImageList
     }
@@ -47,7 +48,7 @@ private val mImageList = ArrayList<Image>()
 
     override fun onPostExecute(result: ArrayList<Image>?) {
         super.onPostExecute(result)
-        mAsyncResultListener.onProcessComplete()
+        mAsyncResultListener.onProcessComplete(result)
     }
 
     private fun request(url: URL): String {
@@ -67,32 +68,44 @@ private val mImageList = ArrayList<Image>()
     }
 
     private fun buildImageList(jsonResponse: String) {
-        var description:String? = null
-        var small:String? = null
+        var description: String? = null
+        var small: String? = null
         var smallImage: Bitmap? = null
-        var userFullName:String? = null
-        var downloadLink:String? = null
-        val results = JSONObject(jsonResponse).getJSONArray("results")
+        var userFullName: String? = null
+        var downloadLink: String? = null
+        val results = JSONObject(jsonResponse).getJSONArray(RESULTS)
         for (imageItem in 0 until results.length()) {
             results.getJSONObject(imageItem).apply {
-                description = getString("description")
-                getJSONObject("urls").apply { small = getString("small") }
+                description = getString(DESCRIPTION)
+                getJSONObject(URLS).apply { small = getString(SMALL_IMAGE) }
                 smallImage = BitmapFactory.decodeStream(URL(Uri.parse(small).buildUpon()
                         .appendQueryParameter(CLIENT_ID, TOKEN)
                         .build().toString()).openConnection().getInputStream())
-                getJSONObject("links").apply { downloadLink = getString("download") }
-                getJSONObject("user").apply { userFullName = getString("name") }
+                getJSONObject(LINKS).apply { downloadLink = getString(DOWNLOAD) }
+                getJSONObject(USER).apply { userFullName = getString(NAME) }
             }
-            mImageList.add(Image(smallImage, description, userFullName, downloadLink))
+            mImageList.add(Image(smallImage!!, description, userFullName!!, downloadLink!!))
             publishProgress(mImageList)
         }
     }
 
     companion object {
+        private const val DESCRIPTION = "description"
+        private const val DOWNLOAD = "download"
         private const val GET = "GET"
         private const val CLIENT_ID = "client_id"
+        private const val ITEMS_PER_PAGE = "30"
+        private const val LINKS = "links"
+        private const val NAME = "name"
+        private const val PAGE = "page"
+        private const val PER_PAGE = "per_page"
+        private const val PHOTO_SEARCH_URL = "https://api.unsplash.com/search/photos"
         private const val QUERY = "query"
+        private const val RESULTS = "results"
+        private const val SMALL_IMAGE = "small"
         private const val TOKEN = "7c08f9cb51eea74a997b5590cd9b6c0d9806b49de9680da104d99fb2b1f33a63"
-        private const val UNSPLASH_URL = "https://api.unsplash.com/search/photos"
+        private const val TOTAL_PAGES = "total_pages"
+        private const val URLS = "urls"
+        private const val USER = "user"
     }
 }
