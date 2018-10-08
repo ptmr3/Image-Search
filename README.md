@@ -1,8 +1,8 @@
-# ImageSearch
+<h1> ImageSearch
 
 ------
 
-##### ImageSearch allows you to search and download images from https://unsplash.com/.
+<h4> ImageSearch allows you to search and download images from https://unsplash.com/.
 
 
 <p>
@@ -17,7 +17,7 @@
 </p>
 
 
-##### Composition and Architecture
+<h4> Composition and Architecture
 
 --  This application was build using no 3rd party libraries except for basic
 testing libraries that are only while running unit tests.
@@ -27,7 +27,7 @@ testing libraries that are only while running unit tests.
   The architectural style was implemented using the Observable/Observer classes provided in Java.
 
 
-##### Let's get more specific
+<h4> Let's get more specific
 
 ![ImageSearchArch](https://github.com/ptmr3/image-search/blob/master/doc/ImageSearchArch.png)
 
