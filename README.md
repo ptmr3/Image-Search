@@ -4,13 +4,14 @@
 
 ##### ImageSearch allows you to search and download images from https://unsplash.com/.
 
-<a href="url"><img src="https://github.com/ptmr3/image-search/blob/master/doc/Screenshot_1.png" align="left" width="150" ></a>
-<a href="url"><img src="https://github.com/ptmr3/image-search/blob/master/doc/Screenshot_2.png" align="left" width="150" ></a>
-<a href="url"><img src="https://github.com/ptmr3/image-search/blob/master/doc/Screenshot_3.png" align="left" width="150" ></a>
-<a href="url"><img src="https://github.com/ptmr3/image-search/blob/master/doc/Screenshot_4.png" align="left" width="150" ></a>
-<a href="url"><img src="https://github.com/ptmr3/image-search/blob/master/doc/Screenshot_5.png" align="left" width="150" ></a>
+<a href="url"><img src="https://github.com/ptmr3/image-search/blob/master/doc/Screenshot_1.png" align="left" width="160" ></a>
+<a href="url"><img src="https://github.com/ptmr3/image-search/blob/master/doc/Screenshot_2.png" align="left" width="160" ></a>
+<a href="url"><img src="https://github.com/ptmr3/image-search/blob/master/doc/Screenshot_3.png" align="left" width="160" ></a>
+<a href="url"><img src="https://github.com/ptmr3/image-search/blob/master/doc/Screenshot_4.png" align="left" width="160" ></a>
+<a href="url"><img src="https://github.com/ptmr3/image-search/blob/master/doc/Screenshot_5.png" align="left" width="160" ></a>
 
------
+
+---
 
 ##### Composition and Architecture
 
