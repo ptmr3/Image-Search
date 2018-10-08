@@ -7,16 +7,12 @@
 <br />
 <br />
 
-<a href="url"><img src="https://github.com/ptmr3/image-search/blob/master/doc/Screenshot_1.png" align="left" width="155" ></a>
-<a href="url"><img src="https://github.com/ptmr3/image-search/blob/master/doc/Screenshot_2.png" align="left" width="155" ></a>
-<a href="url"><img src="https://github.com/ptmr3/image-search/blob/master/doc/Screenshot_3.png" align="left" width="155" ></a>
-<a href="url"><img src="https://github.com/ptmr3/image-search/blob/master/doc/Screenshot_4.png" align="left" width="155" ></a>
-<a href="url"><img src="https://github.com/ptmr3/image-search/blob/master/doc/Screenshot_5.png" align="left" width="155" ></a>
-<br />
-<br />
-<br />
-<br />
-<br />
+<a href="url"><img src="https://github.com/ptmr3/image-search/blob/master/doc/Screenshot_1.png" width="155" ></a>
+<a href="url"><img src="https://github.com/ptmr3/image-search/blob/master/doc/Screenshot_2.png" width="155" ></a>
+<a href="url"><img src="https://github.com/ptmr3/image-search/blob/master/doc/Screenshot_3.png" width="155" ></a>
+<a href="url"><img src="https://github.com/ptmr3/image-search/blob/master/doc/Screenshot_4.png" width="155" ></a>
+<a href="url"><img src="https://github.com/ptmr3/image-search/blob/master/doc/Screenshot_5.png" width="155" ></a>
+
 
 <h4> Composition and Architecture
 
