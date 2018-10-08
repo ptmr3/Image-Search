@@ -68,9 +68,9 @@ class ImageGridFragment : Fragment(), Observer {
             adapter = mImageListAdapter
         }
         downloadButton.setOnClickListener {
+            mImagesToDownloadList.map { image -> image.isDownloading = true }.apply { mImageListAdapter.notifyDataSetChanged() }
             mDownloadActionsCreator.downloadMultipleImages(context!!, mImagesToDownloadList)
             mAppActionsCreator.enableEditMode(false)
-            mImagesToDownloadList.map { image -> image.isDownloading = true }
         }
         mImageListAdapter.setOnClickListener(View.OnClickListener {
             if (context!!.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
