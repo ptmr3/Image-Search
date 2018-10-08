@@ -2,15 +2,18 @@
 
 ------
 
-##### ImageSearch allows you to search and download images from https://unsplash.com/.
+#### ImageSearch allows you to search and download images from https://unsplash.com/.
 
-![ScreenShot_1](https://github.com/ptmr3/image-search/blob/master/ScreenShot_1.png)
-![ScreenShot_2](https://github.com/ptmr3/image-search/blob/master/ScreenShot_2.png)
-![ScreenShot_3](https://github.com/ptmr3/image-search/blob/master/ScreenShot_3.png)
-![ScreenShot_4](https://github.com/ptmr3/image-search/blob/master/ScreenShot_4.png)
-![ScreenShot_5](https://github.com/ptmr3/image-search/blob/master/ScreenShot_5.png)
 
-##### Composition and Architecture
+
+<a href="url"><img src="https://github.com/ptmr3/image-search/blob/master/doc/Screenshot_1.png" width="155" ></a>
+<a href="url"><img src="https://github.com/ptmr3/image-search/blob/master/doc/Screenshot_2.png" width="155" ></a>
+<a href="url"><img src="https://github.com/ptmr3/image-search/blob/master/doc/Screenshot_3.png" width="155" ></a>
+<a href="url"><img src="https://github.com/ptmr3/image-search/blob/master/doc/Screenshot_4.png" width="155" ></a>
+<a href="url"><img src="https://github.com/ptmr3/image-search/blob/master/doc/Screenshot_5.png" width="155" ></a>
+
+
+#### Composition and Architecture
 
 --  This application was build using no 3rd party libraries except for basic
 testing libraries that are only while running unit tests.
@@ -20,9 +23,9 @@ testing libraries that are only while running unit tests.
   The architectural style was implemented using the Observable/Observer classes provided in Java.
 
 
-##### Let's get more specific
+####   Let's get more specific
 
-![ImageSearchArch](https://github.com/ptmr3/image-search/blob/master/ImageSearchArch.png)
+![ImageSearchArch](https://github.com/ptmr3/image-search/blob/master/doc/ImageSearchArch.png)
 
 
 
