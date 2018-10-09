@@ -65,10 +65,11 @@ class SearchStore : Observable(), Observer, AsyncResult {
     }
 
     override fun onProcessComplete(result: ArrayList<Image>?) {
-        setChanged().run { notifyObservers(Reaction(SEARCH_BY_TERM)) }
         if (result == null || result.isEmpty()) {
             showErrorFragment(R.drawable.error_image, R.string.no_results_title,
                     R.string.no_results_description, false, false)
+        } else {
+            setChanged().run { notifyObservers(Reaction(SEARCH_BY_TERM)) }
         }
     }
 
@@ -80,7 +81,8 @@ class SearchStore : Observable(), Observer, AsyncResult {
             putBoolean(RETRY_BUTTON_ENABLED, retryEnabled)
             putBoolean(WIFI_SETTINGS_ENABLED, wifiEnabled)
         }
-        setChanged().run { notifyObservers(Reaction(REPLACE_FRAGMENT, hashMapOf(FRAGMENT_KEY to ErrorFragment().apply { arguments = bundle }))) }
+        val errorFragment = ErrorFragment().apply { arguments = bundle }
+        setChanged().run { notifyObservers(Reaction(REPLACE_FRAGMENT, hashMapOf(FRAGMENT_KEY to errorFragment))) }
     }
 
     companion object {
