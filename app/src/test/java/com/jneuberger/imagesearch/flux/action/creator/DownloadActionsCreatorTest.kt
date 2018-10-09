@@ -12,8 +12,8 @@ import com.jneuberger.imagesearch.flux.action.DownloadActions.Companion.NOTIFY_D
 import com.nhaarman.mockito_kotlin.argumentCaptor
 import com.nhaarman.mockito_kotlin.spy
 import com.nhaarman.mockito_kotlin.verify
-import org.hamcrest.Matchers.equalTo
-import org.junit.Assert.assertThat
+import org.hamcrest.CoreMatchers.equalTo
+import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -22,7 +22,7 @@ import org.powermock.core.classloader.annotations.PrepareForTest
 import org.powermock.modules.junit4.PowerMockRunner
 
 @RunWith(PowerMockRunner::class)
-@PrepareForTest(AppActionsCreator::class)
+@PrepareForTest(DownloadActionsCreator::class, Image::class)
 class DownloadActionsCreatorTest {
     @Mock private lateinit var mContext: Context
     @Mock private lateinit var mImage: Image
