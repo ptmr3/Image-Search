@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment
 import com.jneuberger.imagesearch.flux.Keys.EDIT_MODE_BOOLEAN_KEY
 import com.jneuberger.imagesearch.flux.Keys.FRAGMENT_KEY
 import com.jneuberger.imagesearch.flux.action.Action
+import com.jneuberger.imagesearch.flux.action.AppActions.Companion.CHECK_PERMISSION
 import com.jneuberger.imagesearch.flux.action.AppActions.Companion.ENABLE_EDIT_MODE
 import com.jneuberger.imagesearch.flux.action.AppActions.Companion.REMOVE_FRAGMENT
 import com.jneuberger.imagesearch.flux.action.AppActions.Companion.REPLACE_FRAGMENT
@@ -33,13 +34,20 @@ class AppActionsCreatorTest {
 
     @Test
     @Throws(Exception::class)
+    fun testOnCheckPermission() {
+        mActionsCreator.checkPermission()
+        verify(mActionsCreator).notifyObservers(argumentCaptor.capture())
+        assertThat(argumentCaptor.firstValue.type, equalTo(CHECK_PERMISSION))
+    }
+
+    @Test
+    @Throws(Exception::class)
     fun testOnEnableEditMode() {
         mActionsCreator.enableEditMode(false)
         verify(mActionsCreator).notifyObservers(argumentCaptor.capture())
         assertThat(argumentCaptor.firstValue.type, equalTo(ENABLE_EDIT_MODE))
         assertThat(argumentCaptor.firstValue.data!![EDIT_MODE_BOOLEAN_KEY] as Boolean, equalTo(false))
     }
-
 
     @Test
     @Throws(Exception::class)
