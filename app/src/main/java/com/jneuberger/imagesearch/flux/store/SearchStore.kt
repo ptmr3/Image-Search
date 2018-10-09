@@ -80,7 +80,8 @@ class SearchStore : Observable(), Observer, AsyncResult {
             putBoolean(RETRY_BUTTON_ENABLED, retryEnabled)
             putBoolean(WIFI_SETTINGS_ENABLED, wifiEnabled)
         }
-        setChanged().run { notifyObservers(Reaction(REPLACE_FRAGMENT, hashMapOf(FRAGMENT_KEY to ErrorFragment().apply { arguments = bundle }))) }
+        val errorFragment = ErrorFragment().apply { arguments = bundle }
+        setChanged().run { notifyObservers(Reaction(REPLACE_FRAGMENT, hashMapOf(FRAGMENT_KEY to errorFragment))) }
     }
 
     companion object {
