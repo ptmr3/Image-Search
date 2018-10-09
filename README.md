@@ -16,7 +16,7 @@
 #### Composition and Architecture
 
 --  This application was build using no 3rd party libraries except for basic
-testing libraries that are only while running unit tests.
+testing libraries that are only included while running unit tests.
 
 --  The Flux architectural style was used to build this app to ensure
   separation of concerns, as well as an extendable single directional workflow.
@@ -29,7 +29,7 @@ testing libraries that are only while running unit tests.
 
 
 
-The Fluxx flow consists of 3 major layers: the View Layer, the Action Layer, and the Store Layer
+The Fluxx flow consists of 3 major layers: the View Layer, the Action Layer, and the Store Layer.
 
 - **View Layer** - The View Layer only handles what it must. For the most part, this entails
 handling of UI components, and initiating action flows.
@@ -37,4 +37,4 @@ handling of UI components, and initiating action flows.
 actions and data for the Store Layer to act upon.
 - **Store Layer** -  The Store Layer is the holder of all logic and state.
 Once an action is processed and all associated logic is applied, Reactions
-are published to the View Layer to kick of any reactionary UI work.
+are published to the View Layer to kick off any reactionary UI work.
